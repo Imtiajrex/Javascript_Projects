@@ -1,17 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Project XOX</title>
-</head>
-<body>
-    
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="images-wrapper">
+        <div class="image">
+          <div class="image-body">
+            <img class="img" src="1.jpg" alt="Girrafe" />
+          </div>
+          <div class="image-footer">
+            <a class="image-name">Girrafe In the Sky!</a>
+          </div>
+        </div>
+      </div>
+    </div>
     <script>
-        //read Json file
-        ()=>{
-            alert("hello")
-        }
+      //read Json file
+      let read_json = () => {
+        fetch("./image_info.json")
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            show_image_data(data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
+
+      read_json();
+
+      //loop through the json data
+      let show_image_data = (data) => {
+        /*//get image wrapper
+        let image_wrapper = document.querySelector(".images-wrapper");
+        //image element
+        const image_elements = `
+            <div class="image-body">
+                <img class="img" src="1.jpg" alt="Girrafe" />
+            </div>
+            <div class="image-footer">
+                <a class="image-name">Girrafe In the Sky!</a>
+            </div>
+        `;
+        const image_data = Object.entries(data);
+        image_data.forEach((element) => {
+          //create image div
+          let image_div = document.createElement("div");
+          image_div.classList.add("image");
+          image_div.innerHTML.append(image_elements);
+          image_wrapper.innerHTML += image_div;
+        });*/
+        //Needs Work
+      };
+      /*
+       */
     </script>
-</body>
+  </body>
 </html>
