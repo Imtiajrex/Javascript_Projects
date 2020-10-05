@@ -1,5 +1,5 @@
 //read Json file
-let read_json = () => {
+var read_json = function () {
   fetch("./image_info.json")
     .then((response) => {
       return response.json();
@@ -14,24 +14,24 @@ let read_json = () => {
 
 read_json();
 
-let image_data = [];
+var image_data = [];
 //Get Download History
-let download_history = [];
+var download_history = [];
 if (localStorage.getItem("download_history") != null) {
   download_history = localStorage.getItem("download_history").split(",");
 }
 //Get Browse History
-let browse_history = [];
+var browse_history = [];
 if (localStorage.getItem("browse_history") != null) {
   browse_history = localStorage.getItem("browse_history").split(",");
 }
 
 //loop through the json data
-let show_image_data = (data) => {
+var show_image_data = function (data) {
   //get image wrapper
-  let image_wrapper = document.querySelector(".images-wrapper");
+  var image_wrapper = document.querySelector(".images-wrapper");
   //image element
-  const image_elements = `
+  var image_elements = `
         <div class="image-body">
             <img class="img" src="" alt="Girrafe" />
         </div>
@@ -42,20 +42,20 @@ let show_image_data = (data) => {
 
   image_data = Object.entries(data); //adding image
   image_data.forEach((element, index) => {
-    const image = element[1]["image"];
-    const name = element[1]["name"];
+    var image = element[1]["image"];
+    var name = element[1]["name"];
     //create image div
-    let image_div = document.createElement("div");
+    var image_div = document.createElement("div");
     image_div.classList.add("image");
     //add image elements to image div
     image_div.innerHTML = image_elements;
 
     //select img tag to change image src
-    let image_src = image_div.querySelector(".img");
+    var image_src = image_div.querySelector(".img");
     image_src.src = image;
 
     //select <a> tag to change image Name
-    let image_text = image_div.querySelector(".image-name");
+    var image_text = image_div.querySelector(".image-name");
     image_text.innerHTML = name;
     image_wrapper.appendChild(image_div);
     image_div.onclick = function () {
@@ -105,16 +105,16 @@ let show_image_data = (data) => {
   };
 
   function updateBrowseHistory() {
-    let browse_wrapper = document.querySelector(".browse-wrapper");
+    var browse_wrapper = document.querySelector(".browse-wrapper");
     //image element
-    const browse_elements = `
+    var browse_elements = `
         <div class="browse-body">
             <img class="browse-img" src="" />
         </div>
     `;
     browse_wrapper.innerHTML = "";
     browse_history.forEach(function (element) {
-      let browse = document.createElement("div");
+      var browse = document.createElement("div");
       browse.classList.add("browse");
       browse.innerHTML = browse_elements;
       browse.querySelector(".browse-img").src = image_data[element][1]["image"];
@@ -122,16 +122,16 @@ let show_image_data = (data) => {
     });
   }
   function updateDownloadHistory() {
-    let download_wrapper = document.querySelector(".download-wrapper");
+    var download_wrapper = document.querySelector(".download-wrapper");
     //image element
-    const download_elements = `
+    var download_elements = `
         <div class="download-body">
             <img class="download-img" src="" />
         </div>
     `;
     download_wrapper.innerHTML = "";
     download_history.forEach(function (element) {
-      let download = document.createElement("div");
+      var download = document.createElement("div");
       download.classList.add("download");
       download.innerHTML = download_elements;
       download.querySelector(".download-img").src =
