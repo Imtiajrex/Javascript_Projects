@@ -15,81 +15,26 @@
         <!-- Modal content -->
         <div class="modal-content">
           <img class="zoomed-image" src="1.jpg" alt="" />
-          <a class="download-btn" href="" download>Download</a>
+          <a class="download-btn" download>Download</a>
         </div>
       </div>
+      <!-- Browse History-->
+      <div class="browse-history">
+        <div class="browse-title">
+          <a>Browse History</a>
+        </div>
+
+        <div class="browse-wrapper"></div>
+      </div>
+      <!-- Download History-->
+      <div class="download-history">
+        <div class="download-title">
+          <a>Download History</a>
+        </div>
+
+        <div class="download-wrapper"></div>
+      </div>
     </div>
-    <script>
-      //read Json file
-      let read_json = () => {
-        fetch("./image_info.json")
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            show_image_data(data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      };
-
-      read_json();
-
-      //loop through the json data
-      let show_image_data = (data) => {
-        //get image wrapper
-        let image_wrapper = document.querySelector(".images-wrapper");
-        //image element
-        const image_elements = `
-            <div class="image-body">
-                <img class="img" src="" alt="Girrafe" />
-            </div>
-            <div class="image-footer">
-                <a class="image-name">Girrafe In the Sky!</a>
-            </div>
-        `;
-
-        const image_data = Object.entries(data); //adding image
-        image_data.forEach((element) => {
-          //create image div
-          let image_div = document.createElement("div");
-          image_div.classList.add("image");
-          //add image elements to image div
-          image_div.innerHTML = image_elements;
-
-          //select img tag to change image src
-          let image_src = image_div.querySelector(".img");
-          image_src.src = element[1]["image"];
-
-          //select <a> tag to change image Name
-          let image_text = image_div.querySelector(".image-name");
-          image_text.innerHTML = element[1]["name"];
-          image_div.addEventListener("click", function () {
-            image_zoom_modal(element[1]["image"]);
-          });
-          image_wrapper.appendChild(image_div);
-        });
-
-        function image_zoom_modal(src) {
-          var zoomed_image_modal = document.querySelector(".image-modal"); //select image modal
-          zoomed_image_modal.style.transform = "scale(1)"; //show the modal
-          var zoomed_image = document.querySelector(".zoomed-image"); //get zoomed image element
-          zoomed_image.src = src; //change zoomed image src
-          var download_btn = document.querySelector(".download-btn"); //get download button
-          download_btn.href = src;
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-          var zoomed_image_modal = document.querySelector(".image-modal");
-          if (event.target == zoomed_image_modal) {
-            zoomed_image_modal.style.transform = "scale(0)";
-          }
-        };
-      };
-      /*
-       */
-    </script>
+    <script src="app.js"></script>
   </body>
 </html>
