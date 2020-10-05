@@ -73,7 +73,7 @@ var show_image_data = function (data) {
     var zoomed_image = document.querySelector(".zoomed-image"); //get zoomed image element
     zoomed_image.src = src; //change zoomed image src
     var download_btn = document.querySelector(".download-btn"); //get download button
-    //download_btn.href = src;//add image link for downloading
+    download_btn.href = src; //add image link for downloading
     download_btn.removeEventListener("click", addDownloadHistory);
     download_btn.onclick = function () {
       addDownloadHistory(index); //add downloaded history
