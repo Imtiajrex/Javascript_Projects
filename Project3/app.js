@@ -15,10 +15,12 @@ search_bar.onkeyup = e=>{
         if(element.toUpperCase().includes(text.toUpperCase())){
             all_card_div[index].style.width = "200px"
             all_card_div[index].style.opacity = "1"
+            all_card_div[index].style.display = "block"
         }
         else{
             all_card_div[index].style.width = "0px"
             all_card_div[index].style.opacity = "0"
+            all_card_div[index].style.display = "none"
         }
     })
 };
