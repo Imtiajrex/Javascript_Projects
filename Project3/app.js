@@ -13,14 +13,10 @@ search_bar.onkeyup = e=>{
     let text = e.target.value
     image_name.forEach((element,index)=>{
         if(element.toUpperCase().includes(text.toUpperCase())){
-            all_card_div[index].style.width = "200px"
-            all_card_div[index].style.opacity = "1"
-            all_card_div[index].style.display = "block"
+            all_card_div[index].classList.remove('zero-opacity')
         }
         else{
-            all_card_div[index].style.width = "0px"
-            all_card_div[index].style.opacity = "0"
-            all_card_div[index].style.display = "none"
+            all_card_div[index].classList.add('zero-opacity')
         }
     })
 };
